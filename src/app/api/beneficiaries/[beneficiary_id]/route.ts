@@ -1,6 +1,16 @@
 import { getBigQueryClient, BeneficiaryDetail, generateReasonsFromFlags } from '@/lib/bigquery';
-import { generateGeminiExplanation, flagsToReasonCodes } from '@/lib/gemini';
+import { generateGeminiExplanation, flagsToReasonCodes, getStaticExplanations, DEFAULT_LANGUAGE, type SupportedLanguage } from '@/lib/gemini';
 import { NextRequest, NextResponse } from 'next/server';
+
+// Allowlist for valid language codes
+const ALLOWED_LANGUAGES: readonly SupportedLanguage[] = ['en', 'hi', 'hinglish'] as const;
+
+function validateLanguage(lang: string | null): SupportedLanguage {
+  if (lang && ALLOWED_LANGUAGES.includes(lang as SupportedLanguage)) {
+    return lang as SupportedLanguage;
+  }
+  return DEFAULT_LANGUAGE;
+}
 
 export async function GET(
   request: NextRequest,
@@ -9,7 +19,7 @@ export async function GET(
   try {
     const { beneficiary_id } = await params;
     const searchParams = request.nextUrl.searchParams;
-    const language = (searchParams.get('lang') || 'hinglish') as 'en' | 'hi' | 'hinglish';
+    const language = validateLanguage(searchParams.get('lang'));
 
     if (!beneficiary_id) {
       return NextResponse.json(
@@ -68,11 +78,20 @@ export async function GET(
       flag_high_lifetime_usage: flags.high_lifetime_usage,
     });
     
-    const geminiExplanation = await generateGeminiExplanation(
-      row.risk_level,
-      reasonCodes,
-      language
-    );
+    // Wrap Gemini call in try-catch to handle failures/timeouts gracefully
+    let geminiExplanation: string;
+    try {
+      geminiExplanation = await generateGeminiExplanation(
+        row.risk_level,
+        reasonCodes,
+        language
+      );
+    } catch (geminiError) {
+      // Log error but don't crash the request - use deterministic fallback
+      console.error('Gemini explanation failed:', geminiError instanceof Error ? geminiError.message : 'Unknown error');
+      // Fallback: use static explanations derived from reasonCodes
+      geminiExplanation = getStaticExplanations(reasonCodes, language).join(' ');
+    }
 
     const result: BeneficiaryDetail = {
       beneficiary_id: row.beneficiary_id,

@@ -119,16 +119,24 @@ export default function DashboardPage() {
   // Fetch filtered data when risk filter changes
   useEffect(() => {
     async function fetchFilteredData() {
-      if (riskFilter === "ALL") {
-        const res = await fetch("/api/beneficiaries/high-risk?limit=50");
+      try {
+        const url = riskFilter === "ALL"
+          ? "/api/beneficiaries/high-risk?limit=50"
+          : `/api/beneficiaries/high-risk?limit=50&risk_level=${riskFilter}`;
+        
+        const res = await fetch(url);
+        
+        if (!res.ok) {
+          throw new Error(`HTTP ${res.status}: Failed to fetch filtered data`);
+        }
+        
         const data = await res.json();
         setBeneficiaries(data);
-      } else {
-        const res = await fetch(
-          `/api/beneficiaries/high-risk?limit=50&risk_level=${riskFilter}`,
-        );
-        const data = await res.json();
-        setBeneficiaries(data);
+      } catch (err) {
+        console.error('Error fetching filtered beneficiaries:', err);
+        // Clear beneficiaries to avoid showing stale data, or keep existing data
+        // Optionally set error state here if you want to show error in UI
+        // For now, we keep existing data and log the error
       }
     }
 

@@ -3,6 +3,11 @@
     "development"
   ],
   "hints": {
+    // axe/forms: Accessibility rules for form elements
+    // "select-name": "off" - Disabled due to false positives with dynamically-labeled
+    // select elements in React. Our <select> elements use aria-label attributes
+    // which axe sometimes fails to detect in SSR/hydration scenarios.
+    // Ref: Dashboard language/filter selects have proper aria-label but trigger false positives.
     "axe/forms": [
       "default",
       {
