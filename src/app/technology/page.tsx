@@ -237,17 +237,17 @@ export default function TechnologyPage() {
             <section className="py-12 md:py-16 bg-white">
                 <div className="max-w-4xl mx-auto px-4 text-center">
                     <h2 className="text-2xl md:text-3xl font-heading font-bold text-gray-900 mb-4">
-                        Experience the Technology
+                        Access System Dashboard
                     </h2>
                     <p className="text-gray-600 mb-8">
-                        See how JanAvlokan processes and visualizes risk data
+                        Monitor risk assessments and generate audit reports
                     </p>
                     <div className="flex flex-wrap justify-center gap-4">
                         <Button href="/dashboard">
-                            View Dashboard Demo
+                            Open Dashboard
                         </Button>
                         <Button variant="secondary" href="/contact">
-                            Request Technical Demo
+                            Contact Support
                         </Button>
                     </div>
                 </div>

@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { Button } from "@/components/Button";
+import AuditPanel from "@/components/AuditPanel";
+import BatchRefreshButton from "@/components/BatchRefreshButton";
 import {
   PieChart,
   Pie,
@@ -72,13 +74,19 @@ export default function DashboardPage() {
     useState<BeneficiaryDetail | null>(null);
   const [riskFilter, setRiskFilter] = useState<string>("ALL");
   const [language, setLanguage] = useState<Language>("hinglish");
+  const [refreshKey, setRefreshKey] = useState(0);
 
   // Loading states
   const [loading, setLoading] = useState(true);
   const [detailLoading, setDetailLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // Fetch all dashboard data on mount
+  // Handle refresh complete
+  const handleRefreshComplete = () => {
+    setRefreshKey((prev) => prev + 1);
+  };
+
+  // Fetch all dashboard data on mount or refresh
   useEffect(() => {
     async function fetchDashboardData() {
       setLoading(true);
@@ -114,7 +122,7 @@ export default function DashboardPage() {
     }
 
     fetchDashboardData();
-  }, []);
+  }, [refreshKey]);
 
   // Fetch filtered data when risk filter changes
   useEffect(() => {
@@ -246,10 +254,16 @@ export default function DashboardPage() {
                 BigQuery
               </p>
             </div>
-            <div className="bg-green-100 border border-green-300 rounded px-4 py-2">
-              <span className="text-green-800 text-sm font-medium">
-                🟢 Live BigQuery Connection
-              </span>
+            <div className="flex items-center gap-3">
+              <BatchRefreshButton onRefreshComplete={handleRefreshComplete} />
+              <Button href="/analytics" variant="secondary">
+                📊 Analytics
+              </Button>
+              <div className="bg-green-100 border border-green-300 rounded px-4 py-2">
+                <span className="text-green-800 text-sm font-medium">
+                  🟢 Live BigQuery
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -605,7 +619,7 @@ export default function DashboardPage() {
 
                       {/* Gemini Explanation (AI-polished, human-readable) */}
                       {selectedBeneficiary.gemini_explanation && (
-                        <div className="p-3 bg-blue-50 border border-blue-200 rounded">
+                        <div className="p-3 bg-blue-50 border border-blue-200 rounded mb-4">
                           <h4 className="text-sm font-medium text-blue-800 mb-2 flex items-center gap-1">
                             <span>💬</span>
                             <span>
@@ -623,6 +637,15 @@ export default function DashboardPage() {
                           </p>
                         </div>
                       )}
+
+                      {/* Audit Panel - Human in the Loop */}
+                      <AuditPanel
+                        beneficiaryId={selectedBeneficiary.beneficiary_id}
+                        riskLevel={selectedBeneficiary.risk_level}
+                        onAuditComplete={() => {
+                          // Optionally refresh data after audit action
+                        }}
+                      />
                     </div>
                   ) : (
                     <p className="text-gray-500 text-sm">
@@ -659,10 +682,8 @@ export default function DashboardPage() {
       <section className="py-6 bg-white border-t border-gray-200">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <div className="flex flex-wrap justify-center gap-4">
-            <Button href="/technology">Explore Technology</Button>
-            <Button variant="secondary" href="/contact">
-              Contact Us
-            </Button>
+            <Button href="/analytics">📊 View Analytics</Button>
+            <Button href="/technology" variant="secondary">Explore Technology</Button>
           </div>
         </div>
       </section>

@@ -1,36 +1,155 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# JanAvlokan (जनावलोकन)
+
+**AI-Powered Subsidy Leakage Detection & Monitoring Platform**
+
+---
+
+## Overview
+
+JanAvlokan is a cloud-native, privacy-first decision-support platform designed to proactively identify potential leakages in large-scale government welfare schemes. It uses unsupervised machine learning, policy-aware risk calibration, and explainable analytics to help administrators prioritize audits early—without disrupting legitimate beneficiaries.
+
+---
+
+## Tech Stack
+
+- **Frontend:** Next.js 16, React 19, TypeScript, Tailwind CSS
+- **Visualization:** Recharts, Leaflet (District Heatmaps)
+- **Backend:** Next.js API Routes
+- **Database:** Google BigQuery (analytical core)
+- **AI/ML:** Google Gemini AI for audit explanations
+- **Cloud:** Google Cloud Platform (GCP)
+
+---
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── api/
+│   │   ├── alerts/email/          # Email alert triggers
+│   │   ├── analytics/             # Temporal spikes & time-series analysis
+│   │   ├── audit/                 # Audit logs & export functionality
+│   │   ├── batch/refresh/         # Batch data refresh operations
+│   │   ├── beneficiaries/         # Beneficiary risk data & details
+│   │   ├── dashboard/             # Summary & distribution APIs
+│   │   └── geo/district-risk/     # District-level risk heatmap data
+│   ├── dashboard/                 # Main risk monitoring dashboard
+│   ├── analytics/                 # Analytics & insights page
+│   ├── about/                     # About the platform
+│   ├── features/                  # Feature explanations
+│   └── technology/                # Technology stack details
+├── components/                    # Reusable UI components
+│   ├── AuditPanel.tsx
+│   ├── DistrictHeatmap.tsx
+│   ├── TimeSeriesChart.tsx
+│   └── ...
+└── lib/
+    ├── bigquery.ts                # BigQuery client & queries
+    └── gemini.ts                  # Gemini AI integration
+```
+
+---
+
+## System Architecture
+
+JanAvlokan follows a scalable, modular pipeline built on Google Cloud Platform:
+
+- **BigQuery** serves as the analytical core, storing anonymized transaction data partitioned by date and clustered by scheme and region, enabling analysis at 100M+ transaction scale.
+- **SQL-based feature engineering** derives behavioral signals such as rolling claim frequency, deviation from historical averages, cross-scheme overlaps, temporal spikes, and privacy-safe collusion indicators using hashed identifiers.
+
+---
+
+## Machine Learning & Intelligence Layer
+
+The platform uses unsupervised anomaly detection to model normal beneficiary behavior without relying on labeled fraud data.
+
+Each transaction or beneficiary receives:
+- A normalized risk score (0-1)
+- Risk classification based on scheme-specific thresholds
+- Feature-level contributions for explainability
+
+Models are periodically retrained to adapt to policy, seasonal, and regional changes.
+
+---
+
+## Key Features
+
+| Feature | Description |
+|---------|-------------|
+| **Anomaly Detection** | Unsupervised learning to identify deviations without pre-labeled fraud data |
+| **Privacy-Safe Detection** | Detect coordinated misuse using hashed identifiers while preserving privacy |
+| **Policy-Aware Calibration** | Dynamic thresholds that adapt to scheme type, region, and seasonal variations |
+| **Explainable Insights** | Human-readable explanations for every flagged case for audit defensibility |
+| **District Heatmaps** | Geographic visualization of risk concentration across districts |
+| **Automated Alerts** | Email notifications for high-risk patterns requiring immediate attention |
+
+---
+
+## Dashboard Capabilities
+
+- Ranked high-risk beneficiaries with risk scores
+- Clear, AI-generated risk explanations
+- Cross-scheme and temporal pattern analysis
+- District/block-level risk heatmaps for targeted audits
+- Time-series visualization of transaction anomalies
+- Audit trail and export functionality
+
+---
+
+## Privacy & Ethics
+
+- No PII is stored or transmitted
+- All sensitive identifiers are irreversibly hashed
+- Location data is aggregated at district/block level
+- The system is strictly advisory—humans always remain in control
+- Zero subsidies are blocked or denied; only flagged for review
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+- Node.js 18+
+- Google Cloud account with BigQuery access
+- GCP service account key (gcp-key.json)
+
+### Installation
 
 ```bash
+# Clone the repository
+git clone https://github.com/Rewant-1/JanAvlokan.git
+cd JanAvlokan
+
+# Install dependencies
+npm install
+
+# Set up environment variables
+# Add your GCP key file as gcp-key.json in the root directory
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Impact
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Based on public finance benchmarks, JanAvlokan can potentially detect 10-30% of high-risk leakage cases early, enabling smarter audits, reduced wastage, and increased public trust in welfare systems.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Conclusion
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+JanAvlokan demonstrates how BigQuery, Gemini AI, and explainable analytics can transform subsidy monitoring from reactive audits into proactive, transparent governance—making it a practical, scalable solution aligned with India's vision of Viksit Bharat.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---

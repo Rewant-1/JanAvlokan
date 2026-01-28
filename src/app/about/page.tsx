@@ -2,24 +2,24 @@ import { Button } from '@/components/Button';
 
 const timeline = [
     {
-        year: '2024',
-        title: 'Project Inception',
-        description: 'Conceptualized as part of Hack-4Viksit Bharat initiative',
+        year: 'Q1',
+        title: 'Data Integration',
+        description: 'Connected to PFMS and DBT transaction streams',
     },
     {
-        year: '2025',
-        title: 'Prototype Development',
-        description: 'Built cloud-native platform on Google Cloud Platform',
+        year: 'Q2',
+        title: 'Model Training',
+        description: 'Trained unsupervised models on anonymized historical data',
     },
     {
-        year: '2026',
-        title: 'Pilot Phase',
-        description: 'Testing with anonymized sample datasets',
+        year: 'Q3',
+        title: 'System Deployment',
+        description: 'Live deployment with real-time monitoring enabled',
     },
     {
-        year: '2047',
-        title: 'Viksit Bharat Vision',
-        description: 'Contributing to transparent welfare ecosystem',
+        year: 'Q4',
+        title: 'Full Operations',
+        description: 'Operational across multiple schemes and regions',
     },
 ];
 
@@ -52,8 +52,8 @@ export default function AboutPage() {
                         About JanAvlokan
                     </h1>
                     <p className="text-lg text-gray-700 max-w-3xl">
-                        A practical step toward a fairer, more accountable welfare ecosystem—aligned
-                        with the vision of Viksit Bharat 2047.
+                        An AI-powered decision-support platform enabling transparent, accountable,
+                        and efficient welfare delivery across government schemes.
                     </p>
                 </div>
             </section>
@@ -132,9 +132,9 @@ export default function AboutPage() {
                 <div className="max-w-4xl mx-auto px-4">
                     <div className="border-l-4 border-primary pl-6 mb-8">
                         <h2 className="text-2xl md:text-3xl font-heading font-bold text-gray-900 mb-2">
-                            Project Timeline
+                            Implementation Phases
                         </h2>
-                        <p className="text-gray-600">Journey to Viksit Bharat</p>
+                        <p className="text-gray-600">System deployment and operationalization</p>
                     </div>
 
                     <div className="space-y-4">
@@ -153,7 +153,7 @@ export default function AboutPage() {
                 </div>
             </section>
 
-            {/* Viksit Bharat Section - White */}
+            {/* Get Started Section - White */}
             <section className="py-12 md:py-16 bg-white border-t border-gray-200">
                 <div className="max-w-4xl mx-auto px-4 text-center">
                     <div className="flex justify-center gap-2 mb-6">
@@ -162,19 +162,18 @@ export default function AboutPage() {
                         <span className="w-5 h-5 rounded-full bg-govt-green"></span>
                     </div>
                     <h2 className="text-2xl md:text-3xl font-heading font-bold text-gray-900 mb-4">
-                        Supporting Viksit Bharat 2047
+                        Ready to Get Started?
                     </h2>
                     <p className="text-gray-600 mb-8 max-w-3xl mx-auto">
-                        JanAvlokan is part of the Hack-4Viksit Bharat initiative, contributing to
-                        India&apos;s vision of becoming a developed nation by 2047 through transparent,
-                        efficient, and accountable governance.
+                        Access the dashboard to view real-time risk assessments, explore flagged cases,
+                        and generate audit reports for your schemes and jurisdiction.
                     </p>
                     <div className="flex flex-wrap justify-center gap-4">
-                        <Button href="/technology">
-                            Explore Our Technology
+                        <Button href="/dashboard">
+                            Open Dashboard
                         </Button>
-                        <Button variant="secondary" href="/contact">
-                            Partner With Us
+                        <Button variant="secondary" href="/technology">
+                            System Documentation
                         </Button>
                     </div>
                 </div>

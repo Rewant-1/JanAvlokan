@@ -8,7 +8,7 @@ const footerLinks = {
         { path: '/dashboard', label: 'Risk Dashboard' },
     ],
     resources: [
-        { path: '/contact', label: 'Contact Us' },
+        { path: '/contact', label: 'Help & Support' },
         { path: '#', label: 'Documentation' },
         { path: '#', label: 'API Reference' },
         { path: '#', label: 'FAQs' },
@@ -38,8 +38,8 @@ export default function Footer() {
                             </div>
                         </div>
                         <p className="text-sm text-white/80 mb-4 leading-relaxed">
-                            AI-Powered Subsidy Leakage Detector for Transparent Welfare Delivery.
-                            Supporting Viksit Bharat 2047 vision.
+                            AI-Powered Subsidy Leakage Detection & Monitoring Platform.
+                            Enabling transparent welfare delivery across India.
                         </p>
                         <div className="flex items-center gap-2">
                             <span className="w-4 h-4 rounded-full bg-govt-saffron"></span>

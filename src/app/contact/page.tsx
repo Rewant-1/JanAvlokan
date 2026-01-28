@@ -35,12 +35,12 @@ export default function ContactPage() {
 
     const contactInfo = [
         {
-            title: 'Email',
-            value: 'janavlokan@gov.in',
-            description: 'For general inquiries',
+            title: 'Support Email',
+            value: 'support@janavlokan.gov.in',
+            description: 'For technical assistance',
         },
         {
-            title: 'Office',
+            title: 'Helpdesk',
             value: 'Ministry of Electronics & IT',
             description: 'New Delhi, India',
         },
@@ -57,11 +57,11 @@ export default function ContactPage() {
             <section className="bg-white py-12 md:py-16 border-b border-gray-200">
                 <div className="max-w-7xl mx-auto px-4">
                     <h1 className="text-3xl md:text-4xl font-heading font-bold text-gray-900 mb-4">
-                        Contact Us
+                        Support & Assistance
                     </h1>
                     <p className="text-lg text-gray-700 max-w-3xl">
-                        Have questions about JanAvlokan? Want to explore partnership opportunities?
-                        We&apos;d love to hear from you.
+                        Need help using JanAvlokan? Have questions about flagged cases or reports?
+                        Our support team is here to assist you.
                     </p>
                 </div>
             </section>
@@ -75,7 +75,7 @@ export default function ContactPage() {
                             <div className="bg-white border border-gray-200 rounded overflow-hidden">
                                 <div className="bg-gray-50 px-6 py-4 border-b border-gray-200">
                                     <h2 className="text-xl font-heading font-bold text-gray-900">
-                                        Send us a Message
+                                        Submit a Support Request
                                     </h2>
                                 </div>
                                 <div className="p-6">

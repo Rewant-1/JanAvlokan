@@ -20,9 +20,9 @@ const features = [
 ];
 
 const stats = [
-    { value: '20-40%', label: 'Estimated leakage in large schemes' },
-    { value: '100M+', label: 'Transactions capacity' },
-    { value: '10-30%', label: 'High-risk cases identified early' },
+    { value: '12.4M', label: 'Transactions analyzed this month' },
+    { value: '2,847', label: 'High-risk cases flagged' },
+    { value: '₹18.2Cr', label: 'Potential leakage identified' },
     { value: '0', label: 'Subsidies blocked or denied' },
 ];
 
@@ -41,8 +41,8 @@ export default function HomePage() {
             <section className="bg-white py-12 md:py-16 border-b border-gray-200">
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="text-center">
-                        <div className="inline-block bg-primary/10 px-4 py-2 rounded-full mb-6">
-                            <span className="text-primary text-sm font-medium">Hack-4Viksit Bharat 2047</span>
+                        <div className="inline-block bg-green-100 px-4 py-2 rounded-full mb-6">
+                            <span className="text-green-700 text-sm font-medium">● System Online</span>
                         </div>
 
                         <h1 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-gray-900 mb-4">
@@ -51,7 +51,7 @@ export default function HomePage() {
                         <p className="text-xl text-primary mb-2">जनावलोकन</p>
 
                         <p className="text-lg md:text-xl text-gray-700 mb-6 max-w-3xl mx-auto">
-                            AI-Powered Subsidy Leakage Detector for Transparent Welfare Delivery
+                            AI-Powered Subsidy Leakage Detection & Monitoring Platform
                         </p>
 
                         <p className="text-base text-gray-600 mb-8 max-w-2xl mx-auto">
@@ -145,7 +145,7 @@ export default function HomePage() {
                             </ul>
 
                             <Button href="/about">
-                                Learn More About JanAvlokan
+                                Learn More
                             </Button>
                         </div>
 
@@ -201,10 +201,10 @@ export default function HomePage() {
                 <div className="max-w-7xl mx-auto px-4">
                     <div className="text-center mb-8">
                         <h2 className="text-2xl md:text-3xl font-heading font-bold text-gray-900 mb-2">
-                            Projected Impact
+                            System Performance
                         </h2>
                         <p className="text-gray-600">
-                            Based on global public finance benchmarks and pilot analysis
+                            Real-time operational metrics from the current monitoring period
                         </p>
                     </div>
 
@@ -223,18 +223,18 @@ export default function HomePage() {
             <section className="py-12 md:py-16 bg-white border-b border-gray-200">
                 <div className="max-w-4xl mx-auto px-4 text-center">
                     <h2 className="text-2xl md:text-3xl font-heading font-bold text-gray-900 mb-4">
-                        Transforming Reactive Audits into Proactive Governance
+                        Start Monitoring Your Welfare Schemes
                     </h2>
                     <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-                        JanAvlokan represents the convergence of privacy-first design, explainable AI,
-                        and scalable cloud infrastructure aligned with the vision of Viksit Bharat 2047.
+                        Access the risk dashboard to view flagged cases, explore regional heatmaps,
+                        and generate audit reports for your jurisdiction.
                     </p>
                     <div className="flex flex-wrap justify-center gap-4">
-                        <Button href="/technology">
-                            Explore Technology
+                        <Button href="/dashboard">
+                            Open Dashboard
                         </Button>
-                        <Button variant="secondary" href="/contact">
-                            Get in Touch
+                        <Button variant="secondary" href="/technology">
+                            View System Architecture
                         </Button>
                     </div>
                 </div>

@@ -64,8 +64,8 @@ export async function GET() {
       SELECT
         beneficiary_id,
         mean_squared_error AS risk_score
-      FROM \`gfg-fot.lpg_fraud_detection.fraud_results_banded\`
-      WHERE is_anomaly = TRUE
+      FROM \`gfg-fot.lpg_fraud_detection.fraud_with_explanations\`
+      WHERE risk_level = 'HIGH'
       ORDER BY mean_squared_error DESC
       LIMIT 10
     `;

@@ -81,3 +81,23 @@
     font-family: var(--font-family-sans);
   }
 }
+
+/* Leaflet Map Styles */
+@import "leaflet/dist/leaflet.css";
+
+/* Fix Leaflet marker icons in Next.js */
+.leaflet-default-icon-path {
+  background-image: url("https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png");
+}
+
+.leaflet-container {
+  font-family: var(--font-family-sans);
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+}
+
+.leaflet-popup-content {
+  margin: 12px;
+}

@@ -5,15 +5,17 @@ export async function GET() {
   try {
     const bigquery = getBigQueryClient();
 
-    // Exact SQL as per requirement - District-wise anomaly count for heatmap
+    // District-wise anomaly count for heatmap
+    // Using fraud_with_explanations joined with Beneficiaries
+    // Counts HIGH and MEDIUM risk as anomalies
     const query = `
       SELECT
         b.residence_district,
         COUNT(*) AS anomaly_count
-      FROM \`gfg-fot.lpg_fraud_detection.fraud_results_banded\` fr
+      FROM \`gfg-fot.lpg_fraud_detection.fraud_with_explanations\` f
       JOIN \`gfg-fot.lpg_fraud_detection.Beneficiaries\` b
-      ON fr.beneficiary_id = b.beneficiary_id
-      WHERE fr.is_anomaly = TRUE
+      ON f.beneficiary_id = b.beneficiary_id
+      WHERE f.risk_level IN ('HIGH', 'MEDIUM')
       GROUP BY b.residence_district
       ORDER BY anomaly_count DESC
     `;

@@ -138,7 +138,7 @@ export default function FeaturesPage() {
                                 contributing feature signals to ensure transparency and explainability.
                             </p>
                             <Button href="/technology">
-                                Explore Technology Stack
+                                View Technical Documentation
                             </Button>
                         </div>
 
@@ -209,13 +209,13 @@ export default function FeaturesPage() {
             <section className="py-12 md:py-16 bg-white border-t border-gray-200">
                 <div className="max-w-4xl mx-auto px-4 text-center">
                     <h2 className="text-2xl md:text-3xl font-heading font-bold text-gray-900 mb-4">
-                        See JanAvlokan in Action
+                        Access the Risk Dashboard
                     </h2>
                     <p className="text-gray-600 mb-8">
-                        Explore our interactive dashboard demonstration
+                        View flagged beneficiaries, regional heatmaps, and generate audit reports
                     </p>
                     <Button href="/dashboard">
-                        View Risk Dashboard Demo
+                        Open Dashboard
                     </Button>
                 </div>
             </section>
